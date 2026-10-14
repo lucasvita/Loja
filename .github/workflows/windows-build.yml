@@ -1,0 +1,21 @@
+name: Hilf Print Windows
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: x64
+      - name: Prepare virtual environment
+        run: python -m venv .venv
+      - name: Test and build portable application
+        shell: pwsh
+        run: ./scripts/build-windows.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HilfPrint-Windows
+          path: dist/HilfPrint-Windows.zip

@@ -1,0 +1,4 @@
+-r requirements-dev.txt
+# Apenas validação óptica de códigos de barras; não entram no aplicativo.
+zxing-cpp==2.3.0
+numpy==2.2.6
